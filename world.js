@@ -1,13 +1,17 @@
 document.addEventListener('DOMContentLoaded',function() {
 
-$(document).ready(function () {
-    var lookupButton = $('#lookup');
+// $(document).ready(function () {
+    var lookupButton = $('#lookup'); // lookup_country button
     var countryInput = $('#country');
     var resultDiv = $('#result');
 
+    
+
+    var lookupCitiesButton = $('#lookupCities'); // lookup_cities button
+
     lookupButton.on('click', function () {
         // Get the value entered in the country input field
-        var country = countryInput.val();
+        var country_input = countryInput.val();
 
         console.log('Sending AJAX request with country:', country);
 
@@ -15,7 +19,7 @@ $(document).ready(function () {
         $.ajax({
             url: 'world.php',
             method: 'GET',
-            data: { country: country },
+            data: { country: country_input },
             success: function (data) {
                 console.log('Received data from server:', data);
 
@@ -28,6 +32,29 @@ $(document).ready(function () {
             }
         });
     });
-});
+
+     // New code for cities lookup
+     lookupCitiesButton.on('click', function () {
+        var country_input = countryInput.val();
+
+        // Send an AJAX request to world.php for cities lookup
+        $.ajax({
+            url: 'world.php',
+            method: 'GET',
+            data: {
+                country: country_input,
+                lookup: 'cities' // Additional parameter for cities lookup
+            },
+            success: function (data) {
+                resultDiv.html(data);
+                
+            },
+            error: function (xhr, status, error) {
+                console.error('Error fetching city data:', error);
+            }
+            
+        });
+    });
+// });
 
 });
