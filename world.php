@@ -34,39 +34,45 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 echo '<table border="1">';
     if(isset($_GET['lookup']) && $_GET['lookup'] == 'cities') { // decides the table header
         
-        echo '  <tr>
-                    <th>Name</th>
-                    <th>District</th>
-                    <th>Population</th>
-                </tr>';
+        echo ' <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>District</th>
+                        <th>Population</th>
+                    </tr> 
+                </thead>';
     }
     else {
-        echo ' <tr>
-                    <th>Country Name</th>
-                    <th>Continent</th>
-                    <th>Independence Year</th>
-                    <th>Head of State</th>
-                </tr>';
-    }
+        echo '  <thead>
+                    <tr>
+                        <th>Country Name</th>
+                        <th>Continent</th>
+                        <th>Independence Year</th>
+                        <th>Head of State</th>
+                    </tr>
+                </thead>';
+        }
         foreach ($results as $row) {
-            echo '<tr>';
-                // echo '<td>' . $row['name'] . '</td>';
-                
-                // For cities lookup, display district and population
-                if (isset($_GET['lookup']) && $_GET['lookup'] === 'cities') {
-                    echo '<td>' . $row['name'] . '</td>';
-                    echo '<td>' . $row['district'] . '</td>';
-                    echo '<td>' . $row['population'] . '</td>';
-                } else {
-                    // For country lookup, display continent and head_of_state
-                    echo '<td>' . $row['name'] . '</td>';
-                    echo '<td>' . $row['continent'] . '</td>';
-                    echo '<td>' . $row['independence_year'] . '</td>';
-                    echo '<td>' . $row['head_of_state'] . '</td>';
-                    
-                }
+            echo '<tbody>'; 
+                    echo '<tr>';
+                        // echo '<td>' . $row['name'] . '</td>';
+                        
+                        // For cities lookup, display district and population
+                        if (isset($_GET['lookup']) && $_GET['lookup'] === 'cities') {
+                            echo '<td>' . $row['name'] . '</td>';
+                            echo '<td>' . $row['district'] . '</td>';
+                            echo '<td>' . $row['population'] . '</td>';
+                        } else {
+                            // For country lookup, display continent and head_of_state
+                            echo '<td>' . $row['name'] . '</td>';
+                            echo '<td>' . $row['continent'] . '</td>';
+                            echo '<td>' . $row['independence_year'] . '</td>';
+                            echo '<td>' . $row['head_of_state'] . '</td>';
+                            
+                        }
 
-            echo '</tr>';
+                    echo '</tr>';
+                echo '<tbody> ';
         }
 echo '</table>';
 

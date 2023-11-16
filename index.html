@@ -2,35 +2,50 @@
 <html>
 	<head>
         <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>World Database Lookup</title>
 		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 		<!-- you can modify this as needed or to your preference -->
-		<link href="world.css" type="text/css" rel="stylesheet" />
+		<link href="./world.css" type="text/css" rel="stylesheet" />
 
 		<!-- you write this -->
 		<script src="world.js" type="text/javascript"></script>
 	</head>
 
 	<body>
+		
 		<header>
-			<h1>World Database Lookup</h1>
+			<div class = 'container'>
+				<div class = 'header_img'><img class='header_img' src="./header_img.png" alt="image of a globe"></div>
+				<h1>World Database Lookup</h1>
+			</div>
 		</header>
-
+		
 		<main>
+			<div class = 'container' > 
 			<div id="controls">
-				<label for="country">Country:</label>
+				<!-- <label for="country">Country:</label> -->
 				<input id="country" type="search" name="country" placeholder="Enter country name" />
-				<button id="lookup">Lookup</button>
-				<!-- city lookup button -->
-				<button id="lookupCities">Lookup Cities</button>
+				<ul>
+					<li><button id="lookup">Lookup Country</button></li>
+					<!-- city lookup button -->
+					<li><button id="lookupCities">Lookup Cities</button></li>
+				</ul>
 
 			</div>
 			
 			<div id="result">
 				<!-- countries will appear here -->
 			</div>
+		</div>
 		</main>
-
+		
+		<footer>
+			
+			<p>Copyright @2023 by Calvin Stephenson.</p>
+		
+		</footer>
 	</body>
+	
 </html>
